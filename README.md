@@ -1,32 +1,32 @@
-### ⚙️ Funções:
+### ⚙️ Functions:
 
-- [x] Exibe links .JS utilizados no codigo fonte
-- [x] Entra nos links .JS encontrados e busca pela palavra chave API
-- [X] Exibe links .JSON utilizados no codigo fonte
-- [x] Entra nos links .JSON encontrados e busca pela palavra chave API
-- [x] Exibe links com a palavra WP utilizados no codigo fonte
-- [x] Exibe links com a palavra chave amazonaws.com utilizados no codigo fonte
-- [x] Entra nos links .JS encontrados e busca pela palavra chave amazonaws.com
-- [X] Entra nos links .JSON encontrados e busca pela palavra chave amazonaws.com
+- [x] Displays .JS links used in source code
+- [x] Enter the .JS links found and search for the API keyword
+- [X] Displays .JSON links used in source code
+- [x] Enter the .JSON links found and search for the API keyword
+- [x] Display links with the word WP used in the source code
+- [x] Displays links with the amazonaws.com keyword used in the source code
+- [x] Enter the .JS links found and search for the keyword amazonaws.com
+- [X] Enter the .JSON links found and search for the keyword amazonaws.com
 
-## 📫 Contribuindo com o ODIN:
-Para contribuir com ODIN, siga estas etapas:
+## 📫 Contributing to ODIN:
+To contribute to ODIN, follow these steps:
 
-1. Bifurque este repositório.
-2. Crie um branch: `git checkout -b <nome_branch>`.
-3. Faça suas alterações e confirme-as: `git commit -m '<mensagem_commit>'`
-4. Envie para o branch original: `git push origin <nome_do_projeto> / <local>`
-5. Crie a solicitação de pull.
+1. Fork this repository.
+2. Create a branch: `git checkout -b <branch_name>`.
+3. Make your changes and commit them: `git commit -m '<commit_message>'`
+4. Push to original branch: `git push origin <project_name> / <location>`
+5. Create the pull request.
 
-Como alternativa, consulte a documentação do GitHub em [como criar uma solicitação pull](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+Alternatively, see the GitHub documentation at [how to create a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request ).
 
 
-## 😄 Seja um dos contribuidores<br>
+## 😄 Be one of the contributors<br>
 
-Quer fazer parte desse projeto? Faça bifurcações e alimente este projeto com mais funções e módulos automatizados.
+Do you want to be part of this project? Make forks and feed this project with more functions and automated modules.
 
-## 📝 Licença
+## 📝 License
 
-Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE) para mais detalhes.
+This project is under license. See the [LICENSE](LICENSE) file for more details.
 
-[⬆ Voltar ao topo](#odin)<br>
+[⬆ back to top](#odin)<br>
