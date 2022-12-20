@@ -22,22 +22,22 @@ print ("""
 By: Raphael (Schem4) Fiorin
 """)
 def scan():
-    # Faz uma solicitação HTTP para obter o código-fonte da página
+    # Make an HTTP request to get the page's source code
     response = requests.get(url)
     html = response.text
 
-    # Usa expressões regulares para procurar por links com extensão .js ou .json
+    # Use regular expressions to search for links with a .js or .json extension
     js_regex = r'(?:https?://|/)(?:[\w-]+\.)*[\w-]+(?:\.js(?:\?\S+)?)?'
     json_regex = r'(?:https?://|/)(?:[\w-]+\.)*[\w-]+(?:\.json(?:\?\S+)?)?'
 
-    # Usa expressões regulares para procurar por links com extensão .wp ou .wp-json
+    # Use regular expressions to search for links with a .wp or .wp-json extension
     wp_regex = r'(?:https?://|/)(?:[\w-]+\.)*[\w-]+(?:/wp(?:\?\S+)?)?'
     wp_json_regex = r'(?:https?://|/)(?:[\w-]+\.)*[\w-]+(?:/wp-json(?:\?\S+)?)?'
 
-    # Usa expressões regulares para procurar por links com nome amazonaws.com
+    # Use regular expressions to search for links named amazonaws.com
     aws_regex =  r"https?://[^/]*amazonaws\.com[^\s]*"
 
-    # Filtro de pesquisa
+    # Search filter
     js_links = re.findall(js_regex, html)
     json_links = re.findall(json_regex, html)
 
@@ -46,7 +46,7 @@ def scan():
 
     aws_links = re.findall(aws_regex, html)
 
-    # Remove duplicatas
+    # remove duplicates
     def get_full_links(base_url, links):
         full_links = set()
         for link in links:
@@ -61,14 +61,14 @@ def scan():
     full_wp_links = get_full_links(url, wp_links)
     full_aws_links = get_full_links(url, aws_links)
 
-    # Imprime os links com extenções JS encontradas
-    print('\n★ Links JS encontrados:')
+    # Print the links with JS extension found
+    print('\n★ JS links found:')
     for js_link in full_js_links:
         if '.js' in js_link:
             print(js_link)
 
-    # Imprime os links com extenções JS e palavra chave API encontradas
-    print('\n★ Links JS com a palavra API encontrados:')
+    # Print the links with found JS extensions and API keywords
+    print('\n★ JS links with API word found:')
     for js_link in full_js_links:
       if '.js' in js_link:
         response = requests.get(js_link)
@@ -78,8 +78,8 @@ def scan():
         if re.search('api', js_code):
             print(f'{js_link}')
 
-    # Imprime os links com extenções JSON encontradas
-    print('\n★ Links JSON encontrados:')
+    # Print the links with found JSON extensions
+    print('\n★ Found JSON links:')
     for json_link in full_json_links:
       if '.json' in json_link:
         response = requests.get(json_link)
@@ -89,8 +89,8 @@ def scan():
         if re.search('.json', json_code):
             print(f'{json_link}')
 
-    #Imprime os links com extenções JSON e palavra chave API encontradas
-    print('\n★ Links JSON com a palavra API encontrados:')
+    #Print the links with found JSON extensions and API keywords
+    print('\n★ Found JSON links with the word API:')
     for json_link in full_json_links:
       if '.json' in json_link:
         response = requests.get(json_link)
@@ -100,20 +100,20 @@ def scan():
         if re.search('api', json_code):
             print(f'{json_link}')
 
-    # Imprime os links com extenções WP encontradas
-    print('\n★ Links WP encontrados:')
+    # Print the links with found WP extensions
+    print('\n★ Found WP Links:')
     for wp_link in full_wp_links:
         if 'wp' in wp_link:
             print(wp_link)
 
-    # Imprime os links com extenções AWS encontradas
-    print('\n★ Links AWS encontrados na pagina principal:')
+    # Print the links with found AWS extensions
+    print('\n★ AWS links found on main page:')
     for aws_link in full_aws_links:
       aws_link = aws_link.replace("></script>","").replace('"', "",).replace(",", "").replace("'", "")
       print(aws_link)
 
-    #Imprime os links com extenções JS e palavra chave AWS encontradas        
-    print('\n★ Links JS com a palavra AWS encontrados:')
+    #Print the links with found JS extensions and AWS keyword
+    print('\n★ JS links with the word AWS found:')
     for js_link in full_js_links:
         if '.js' in js_link:
           response = requests.get(js_link)
@@ -121,8 +121,8 @@ def scan():
           for link in links:
             print(link+'\n')
 
-    #Imprime os links com extenções JSON e palavra chave AWS encontradas        
-    print('\n★ Links JSON com a palavra AWS encontrados:')
+    #Print the links with found JSON extensions and AWS keyword
+    print('\n★ Found JSON links with the word AWS::')
     for json_link in full_json_links:
       if '.json' in json_link:
         response = requests.get(json_link)
@@ -132,28 +132,29 @@ def scan():
           print ("=-=-=-=-=-=-=-=-=-=-=-=-=")
 
 # Menu
-print("Escolha uma opção de scan:")
-print("★ 1 - Scan de uma URL via input")
-print("★ 2 - Scan de várias URLs contidas em um arquivo domains.txt \n")
+print("""Choose a scan option:
+★ 1 - Scan unique URL (Usage: https://example.com.br)
+★ 2 - Scan multiple URLs contained in a domains.txt file (Usage: https://example.com.br)
+\n""")
 
-# Recebe a opção de scan escolhida pelo usuário
-opcao = int(input("★ Digite a opção desejada: "))
+# Get the scan option chosen by the user
+option = int(input("★ Enter the desired option: "))
 
-# Verifica qual opção foi escolhida e realiza o scan da URL ou das URLs contidas no arquivo .txt
-if opcao == 1:
-    url = input("Digite a URL a ser escaneada: ")
-    print ("\n =-=-=-=-=-=-=-=-=-=-=-=-=")
-    print(f"★ Scaneando URL: {url}\n")
+# Check which option was chosen and scan the URL or URLs contained in the .txt file
+if option == 1:
+    url = input("Enter the URL to be scanned: ")
+    print("\n =-=-=-=-=-=-=-=-=-=-=-=-=")
+    print(f"★ Scanning URL: {url}\n")
     scan()
 
-elif opcao == 2:
-    # Abre o arquivo .txt e lê o conteúdo linha por linha
+elif option == 2:
+    # Open the .txt file and read the contents line by line
     with open('domains.txt', 'r') as f:
         lines = f.readlines()
-    # Percorre cada linha do arquivo
+    # Loop through each line of the file
     for line in lines:
-        # Remove o caractere de nova linha da linha atual
+        # Remove the newline character from the current line
         url = line.strip()
         print ("\n =-=-=-=-=-=-=-=-=-=-=-=-=")
-        print (f"★ Scaneando URL: {url}")
+        print (f"★ Scanning URL: {url}")
         scan()
